@@ -26,7 +26,6 @@ class App extends Component {
   }
 
   handleSearch(code) {
-    console.log('handleSearch');
     let presentation = Presentations.findOne({code: code});
     if(!presentation) alert('There is no presentation with the code ' + code);
     this.setState({presentation: presentation,

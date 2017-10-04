@@ -10,7 +10,6 @@ class NavBar extends Component {
 
   onEnter(evt) {
     if(evt.key ==='Enter') {
-      console.log('onEnter');
       this.props.handleSearch(evt.target.value);
     }
   }

@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
+
+// import './Container.css';
+
+import CommentList from './CommentList.jsx';
+import Information from './Information.jsx';
+import CommentForm from './CommentForm.jsx';
  
 import { Presentations, Comments, Users } from '../../api/Data.js';
 
@@ -14,7 +20,17 @@ class Container extends Component {
   render() {
     return (
       <div>
-        <h1>{this.props.presentation.code}</h1>
+        <div className="container-fluid">
+          <Information
+            presentation = {this.props.presentation} />
+        </div>
+        <div className="container-fluid comment-list">
+          <CommentList
+            comments = {this.props.comments} />
+        </div>
+        <div className="container-fluid comment-form">
+          <CommentForm />
+        </div>
       </div>
     );
   }
@@ -26,10 +42,9 @@ Container.propTypes = {
 };
 
 export default createContainer( (props) => {
-    // return {
-    //   // user: Users.findOne({username: this.props.user.username}).fetch(),
-    //   presentation: Presentations.findOne({code: props.presentation.code}),
-    //   comments: Comments.find({presentationCode: props.presentation.code}).fetch()
-    // };
-    return {};
+    return {
+      // user: Users.findOne({username: props.user.username}),
+      presentation: Presentations.findOne({code: props.presentation.code}),
+      comments: Comments.find({presentationCode: props.presentation.code}).fetch()
+    };
 }, Container); 

@@ -1,0 +1,11 @@
+.information {
+    position: absolute;
+}
+
+.comment-list {
+    overflow: auto;
+}
+
+.comment-form {
+    position: absolute;
+}
