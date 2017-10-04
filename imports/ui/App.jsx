@@ -7,7 +7,7 @@ import PresentationForm from './PresentationForm.jsx';
 
 import RandomString from 'randomstring';
  
-import { Presentations, Comments, Users } from '../api/data.js';
+import { Presentations, Comments, Users } from '../api/Data.js';
 
 class App extends Component {
   
@@ -37,9 +37,26 @@ class App extends Component {
     this.setState({showPresentationForm: true});
   }
 
+  generateCode() {
+    let code = RandomString.generate(5);
+    while(Presentations.findOne({code: code})) {
+      code = RandomString.generate(5);
+    }
+    return code;
+  }
+
   handleSubmit(presentation) {
-    alert('test');
-    this.setState({showPresentationForm: false});
+    const code = this.generateCode();
+
+    let createdPresentation = {
+      code : code,
+      name : presentation.name,
+      description: presentation.description,
+      user: this.state.user
+    }
+    Presentations.insert(createdPresentation);
+    this.setState({showPresentationForm: false,
+                  presentation: createdPresentation});
   }
 
   handleCancel() {
@@ -53,7 +70,11 @@ class App extends Component {
             handleSearch={this.handleSearch}
             handleCreateButton={this.handleCreateButton}
           />
-          {this.state.presentation && <Container />}
+          {this.state.presentation && !this.state.showPresentationForm &&
+          <Container 
+            presentation = {this.state.presentation}
+            user = {this.state.user}
+          />}
           {this.state.showPresentationForm && 
           <PresentationForm 
             handleSubmit={this.handleSubmit} 
@@ -65,8 +86,7 @@ class App extends Component {
 
 App.propTypes = {
     user: PropTypes.object,
-    presentation: PropTypes.object,
-    comments: PropTypes.array
+    presentation: PropTypes.object
 };
 
 export default App;

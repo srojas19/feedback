@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
  
-import { Presentations, Comments, Users, Votes } from '../../api/data.js';
+import { Presentations, Comments, Users } from '../../api/Data.js';
 
 class Container extends Component {
   
@@ -14,22 +14,22 @@ class Container extends Component {
   render() {
     return (
       <div>
-        <h1>Se buscó</h1>
+        <h1>{this.props.presentation.code}</h1>
       </div>
     );
   }
 }
 
-// App.propTypes = {
-//     user: PropTypes.object,
-//     presentation: PropTypes.object,
-//     comments: PropTypes.array
-// };
+Container.propTypes = {
+    // user: PropTypes.object.isRequired,
+    // presentation: PropTypes.object.isRequired
+};
 
-export default createContainer( () => {
+export default createContainer( (props) => {
     // return {
-    //     user: Users.findOne({}).fetch(),
-    //     comments: Comments.findOne({}).fetch
+    //   // user: Users.findOne({username: this.props.user.username}).fetch(),
+    //   presentation: Presentations.findOne({code: props.presentation.code}),
+    //   comments: Comments.find({presentationCode: props.presentation.code}).fetch()
     // };
     return {};
 }, Container); 
