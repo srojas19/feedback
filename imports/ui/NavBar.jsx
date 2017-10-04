@@ -15,23 +15,34 @@ class NavBar extends Component {
     }
   }
 
+  onClickCreate(evt) {
+    this.props.handleCreateButton();
+  }
+
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <a className="h1 navbar-brand mb-0">Feedback</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <button 
+            className="btn btn-outline-primary my-2 my-sm-0" 
+            type="submit"
+            onClick={this.onClickCreate.bind(this)}
+          > Create</button>
           <input 
-            className="form-control mr-sm-2" 
+            className="form-control mr-sm-2 mx-3" 
             type="text" 
-            placeholder="Presentación" 
+            placeholder="Presentation" 
             aria-label="Search"
             onKeyPress = {this.onEnter.bind(this)}
           />
-          <button className="btn btn-primary my-2 my-sm-0" type="submit">Log in</button>
+          <div className="my-2 my-lg-0">
+            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Log in</button>
+          </div>
         </div>
       </nav>
     );
