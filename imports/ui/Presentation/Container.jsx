@@ -8,7 +8,7 @@ import CommentList from './CommentList.jsx';
 import Information from './Information.jsx';
 import CommentForm from './CommentForm.jsx';
  
-import { Presentations, Comments, Users } from '../../api/Data.js';
+import { Presentations, Comments } from '../../api/Data.js';
 
 class Container extends Component {
   
@@ -43,7 +43,6 @@ Container.propTypes = {
 
 export default createContainer( (props) => {
     return {
-      // user: Users.findOne({username: props.user.username}),
       presentation: Presentations.findOne({code: props.presentation.code}),
       comments: Comments.find({presentationCode: props.presentation.code}).fetch()
     };

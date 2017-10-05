@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+
 class NavBar extends Component {
 
   constructor(props) {
@@ -27,11 +29,10 @@ class NavBar extends Component {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <button 
-            className="btn btn-outline-primary my-2 my-sm-0" 
-            type="submit"
-            onClick={this.onClickCreate.bind(this)}
-          > Create</button>
+          <div className="my-2 my-lg-0 btn btn-outline-success">
+            <AccountsUIWrapper />
+          </div>
+          
           <input 
             className="form-control mr-sm-2 mx-3" 
             type="text" 
@@ -39,9 +40,11 @@ class NavBar extends Component {
             aria-label="Search"
             onKeyPress = {this.onEnter.bind(this)}
           />
-          <div className="my-2 my-lg-0">
-            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Log in</button>
-          </div>
+          <button 
+            className="btn btn-outline-primary my-2 my-sm-0" 
+            type="submit"
+            onClick={this.onClickCreate.bind(this)}
+          > Create</button>
         </div>
       </nav>
     );

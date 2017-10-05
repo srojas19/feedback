@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { createContainer } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
+
 import NavBar from './NavBar.jsx';
 import Container from './Presentation/Container.jsx';
 import PresentationForm from './PresentationForm.jsx';
@@ -19,7 +22,6 @@ class App extends Component {
     this.handleCancel = this.handleCancel.bind(this);
 
     this.state = {
-      user: null,
       presentation: null,
       showPresentationForm: false
     }
@@ -27,6 +29,7 @@ class App extends Component {
 
   handleSearch(code) {
     let presentation = Presentations.findOne({code: code});
+    if(!this.props.user) alert('You need to be logged in to continue');
     if(!presentation) alert('There is no presentation with the code ' + code);
     this.setState({presentation: presentation,
                   showPresentationForm: false});
@@ -46,12 +49,17 @@ class App extends Component {
 
   handleSubmit(presentation) {
     const code = this.generateCode();
-
+    if(!this.props.user) {
+      alert('You need to be logged in to create a presentation');
+      return;
+    } 
     let createdPresentation = {
       code : code,
       name : presentation.name,
       description: presentation.description,
-      user: this.state.user
+      user: this.props.user,
+      likes : [],
+      dislikes : []
     }
     Presentations.insert(createdPresentation);
     this.setState({showPresentationForm: false,
@@ -69,10 +77,12 @@ class App extends Component {
             handleSearch={this.handleSearch}
             handleCreateButton={this.handleCreateButton}
           />
-          {this.state.presentation && !this.state.showPresentationForm &&
+          {this.state.presentation && 
+          !this.state.showPresentationForm &&
+          this.props.user &&
           <Container 
             presentation = {this.state.presentation}
-            user = {this.state.user}
+            user = {this.props.user}
           />}
           {this.state.showPresentationForm && 
           <PresentationForm 
@@ -88,4 +98,8 @@ App.propTypes = {
     presentation: PropTypes.object
 };
 
-export default App;
+export default createContainer(() => {
+  return {
+    user: Meteor.user(),
+  };
+}, App);
