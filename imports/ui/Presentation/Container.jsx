@@ -43,7 +43,7 @@ Container.propTypes = {
 
 export default createContainer( (props) => {
     return {
-      presentation: Presentations.findOne({code: props.presentation.code}),
-      comments: Comments.find({presentationCode: props.presentation.code}).fetch()
+      presentation: Presentations.findOne({_id: props.presentationId}),
+      comments: Comments.find({presentationId: props.presentationId}).fetch()
     };
 }, Container); 
