@@ -11,7 +11,9 @@ class Information extends Component {
   render() {
     return (
       <div>
-        <h1>{this.props.presentation.code}</h1>
+        <h1>Codigo: {this.props.presentation.code}</h1>
+        <h1>Nombre: {this.props.presentation.name}</h1>
+        <h1>Descripcion: {this.props.presentation.description}</h1>
       </div>
     );
   }

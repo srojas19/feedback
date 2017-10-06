@@ -8,7 +8,7 @@ import CommentList from './CommentList.jsx';
 import Information from './Information.jsx';
 import CommentForm from './CommentForm.jsx';
  
-import { Presentations, Comments } from '../../api/Data.js';
+import { Presentations, Comments } from '../../api/data.js';
 
 class Container extends Component {
   
@@ -29,7 +29,8 @@ class Container extends Component {
             comments = {this.props.comments} />
         </div>
         <div className="container-fluid comment-form">
-          <CommentForm />
+          <CommentForm
+            presentationId = {this.props.presentationId}/>
         </div>
       </div>
     );

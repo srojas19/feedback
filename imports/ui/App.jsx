@@ -8,7 +8,7 @@ import NavBar from './NavBar.jsx';
 import Container from './Presentation/Container.jsx';
 import PresentationForm from './PresentationForm.jsx';
  
-import { Presentations, Comments } from '../api/Data.js';
+import { Presentations, Comments } from '../api/data.js';
 
 class App extends Component {
   

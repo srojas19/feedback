@@ -36,6 +36,23 @@ Meteor.methods({
         username: Meteor.user().username
       }
     });
+  },
+  'comments.insert'(comment) {
+    check(comment, Object);
+
+    if (! Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    return Comments.insert({
+      text: comment.text,
+      presentationId: comment.presentationId,
+      createdAt: new Date(),
+      user: {
+        _id: Meteor.userId(),
+        username: Meteor.user().username
+      }
+    });
   }
 });
 

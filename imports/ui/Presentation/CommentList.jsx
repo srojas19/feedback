@@ -10,10 +10,16 @@ class CommentList extends Component {
   }
 
 
+  renderComments() {
+    return this.props.comments.map((comment) => (
+      <Comment key= {comment._id} comment={comment} />
+    ));
+  }
+
   render() {
     return (
       <div>
-        <h1>Test</h1>
+        <ul>{this.renderComments()}</ul>
       </div>
     );
   }
