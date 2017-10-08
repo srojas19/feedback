@@ -29,13 +29,40 @@ Meteor.methods({
       name: presentation.name,
       description: presentation.description,
       createdAt: new Date(),
-      likes: [],
-      dislikes: [],
+      votes: [],
       user: {
         _id: Meteor.userId(),
         username: Meteor.user().username
       }
     });
+  },
+  'presentations.delete'(presentationId) {
+    check(presentationId, String);
+    
+    if (! Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    let presentation = Presentations.findOne({_id: presentationId});
+
+    if(Meteor.userId() !== presentation.user._id ) {
+      throw new Meteor.Error('User doesnt own the presentation');
+    }
+    
+    Presentations.deleteOne({ _id: presentationId });
+    Comments.deleteMany( { presentationId: presentationId } );
+  },
+  'presentations.vote'(presentationId) {
+    check(presentationId, String);
+    
+    if (! Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
+    
+    Presentations.update(
+      { _id: presentationId },
+      { $addToSet: {votes:{ _id: Meteor.userId(),username: Meteor.user().username } }}
+    );
   },
   'comments.insert'(comment) {
     check(comment, Object);
@@ -46,13 +73,27 @@ Meteor.methods({
 
     return Comments.insert({
       text: comment.text,
+      type: comment.type,
       presentationId: comment.presentationId,
       createdAt: new Date(),
+      votes: [],
       user: {
         _id: Meteor.userId(),
         username: Meteor.user().username
       }
     });
+  },
+  'comments.vote'(commentId) {
+    check(commentId, String);
+    
+    if (! Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
+    
+    Comments.update(
+      { _id: commentId },
+      { $addToSet: {votes:{ _id: Meteor.userId(),username: Meteor.user().username } } }
+    );
   }
 });
 
