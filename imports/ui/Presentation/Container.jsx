@@ -20,10 +20,10 @@ class Container extends Component {
   render() {
     return (
       
-<div class="container bootstrap snippet">
-    <div class="row">
-    <div class="col-md-12">
-      <div class="blog-comment">
+<div className="container bootstrap snippet">
+    <div className="row">
+    <div className="col-md-12">
+      <div className="blog-comment">
         <Information presentation = {this.props.presentation} />
         <hr/>
         <CommentList comments = {this.props.comments} />

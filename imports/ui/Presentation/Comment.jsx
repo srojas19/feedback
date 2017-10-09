@@ -27,10 +27,10 @@ export default class Comment extends Component {
   render() {
     return (
 
-      <li class="clearfix">
-         <img src="https://bootdey.com/img/Content/user_1.jpg" class="avatar" alt=""/>
-          <div class="post-comments">
-              <p class="meta">{this.darfecha(this.props.comment.createdAt)}<a href="#">{this.props.comment.user.username}</a> says: </p>
+      <li className="clearfix">
+         <img src="https://bootdey.com/img/Content/user_1.jpg" className="avatar" alt=""/>
+          <div className="post-comments">
+              <p className="meta">{this.darfecha(this.props.comment.createdAt)}<a href="#">{this.props.comment.user.username}</a> says: </p>
               <p>
                   {this.props.comment.text}
               </p>
