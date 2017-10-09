@@ -12,6 +12,7 @@ class CommentForm extends Component {
 
 
 handleSubmit(event) {
+    //ReactDOM.findDOMNode(this.refs.textInput).scrollIntoView();
     event.preventDefault(); 
 
     // Find the text field via the React ref
@@ -25,25 +26,25 @@ handleSubmit(event) {
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
 }
 
+
   render() {
     return (
-      <div>
+      <div className="sticky">
       <form className="new-comment" onSubmit={this.handleSubmit.bind(this)} >
         <input
-          className="col-sm-12"
+          className="form-control"
           type="text"
           ref="textInput"
           placeholder="Presiona Enter para enviar comentario"
         />
       </form>
-
+      
       </div>
     );
   }
 
 
 }
-
 
 CommentForm.propTypes = {
     // user: PropTypes.object.isRequired,

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Meteor } from 'meteor/meteor';
 
 export default class Comment extends Component {
 
@@ -23,6 +24,12 @@ export default class Comment extends Component {
    
   }
 
+  handleClick(event){
+    event.preventDefault();
+    Meteor.call('comments.vote', this.props.comment._id);
+    console.log(this.props.comment.votes);
+    
+  }
 
   render() {
     return (
@@ -30,7 +37,14 @@ export default class Comment extends Component {
       <li className="clearfix">
          <img src="https://bootdey.com/img/Content/user_1.jpg" className="avatar" alt=""/>
           <div className="post-comments">
-              <p className="meta">{this.darfecha(this.props.comment.createdAt)}<a href="#">{this.props.comment.user.username}</a> says: </p>
+              <div className="meta">
+                <div className="row">
+                  <p className="col-sm-11">
+                    {this.darfecha(this.props.comment.createdAt)}<a href="#">{this.props.comment.user.username}</a> says: </p>
+                  <button type="button" className="btn btn-link col-sm-1" onClick={this.handleClick.bind(this)}>Votar</button>
+                </div>
+              </div>
+              
               <p>
                   {this.props.comment.text}
               </p>

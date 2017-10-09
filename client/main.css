@@ -93,3 +93,8 @@ a {
 	line-height: 30px;
 	font-weight: 800;
 }
+
+.sticky {
+	position: sticky;
+	bottom: 0px;
+}
