@@ -30,9 +30,10 @@ handleSubmit(event) {
       <div>
       <form className="new-comment" onSubmit={this.handleSubmit.bind(this)} >
         <input
+          className="col-sm-12"
           type="text"
           ref="textInput"
-          placeholder="new comments"
+          placeholder="Presiona Enter para enviar comentario"
         />
       </form>
 

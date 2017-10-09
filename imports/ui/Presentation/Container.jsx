@@ -19,20 +19,23 @@ class Container extends Component {
 
   render() {
     return (
-      <div>
-        <div className="container-fluid">
-          <Information
-            presentation = {this.props.presentation} />
-        </div>
-        <div className="container-fluid comment-list">
-          <CommentList
-            comments = {this.props.comments} />
-        </div>
-        <div className="container-fluid comment-form">
-          <CommentForm
-            presentationId = {this.props.presentationId}/>
-        </div>
+      
+<div class="container bootstrap snippet">
+    <div class="row">
+    <div class="col-md-12">
+        <div class="blog-comment">
+        <h3 class="text-success"><Information
+                presentation = {this.props.presentation} />
+        </h3>
+                <hr/>
+        <CommentList comments = {this.props.comments} />
+
+        <CommentForm presentationId = {this.props.presentationId}/>
+
       </div>
+    </div>
+  </div>
+</div>
     );
   }
 }
