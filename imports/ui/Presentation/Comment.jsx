@@ -26,9 +26,8 @@ export default class Comment extends Component {
 
   handleClick(event){
     event.preventDefault();
-    Meteor.call('comments.vote', this.props.comment._id);
-    console.log(this.props.comment.votes);
-    
+    this.refs.btn.setAttribute("disabled", "disabled");    
+    Meteor.call('comments.vote', this.props.comment._id); 
   }
 
   render() {
@@ -37,19 +36,21 @@ export default class Comment extends Component {
       <li className="clearfix">
          <img src="https://bootdey.com/img/Content/user_1.jpg" className="avatar" alt=""/>
           <div className="post-comments">
-              <div className="meta">
-                <div className="row">
-                  <p className="col-sm-11">
-                    {this.darfecha(this.props.comment.createdAt)}<a href="#">{this.props.comment.user.username}</a> says: </p>
-                  <button type="button" className="btn btn-link col-sm-1" onClick={this.handleClick.bind(this)}>Votar</button>
-                </div>
+            <div className="meta">
+              <p> {this.darfecha(this.props.comment.createdAt)}<a href="#">{this.props.comment.user.username}</a> says: </p>    
+            </div>
+            <p> {this.props.comment.text} </p>
+            <div className="row">
+              <div className="col-sm-1">
+                <button type="button" ref="btn" className="btn btn-outline-secundary btn-sm" onClick={this.handleClick.bind(this)}>👍</button>  
+              </div> 
+              <div className="col-sm-1">
+                <p className="font-weight-bold"> {this.props.comment.votes.length} </p>            
               </div>
-              
-              <p>
-                  {this.props.comment.text}
-              </p>
+            </div>
+            
           </div>
-        </li>
+      </li>
     );
   }
 }
