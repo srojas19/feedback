@@ -10,10 +10,10 @@ class Information extends Component {
 
   render() {
     return (
-      <div>
-        <h3 class="text-success">Codigo: {this.props.presentation.code}</h3>
-        <h3 class="text-success">Nombre: {this.props.presentation.name}</h3>
-        <h3 class="text-success">Descripcion: {this.props.presentation.description}</h3>
+      <div className='my-2 card'>
+        <h4 className="card-header">Código: {this.props.presentation.code} </h4>
+        <h2 className='card-title mx-4 my-2'> {this.props.presentation.name} </h2>
+        <h4 className='card-text mx-4 my-2'> {this.props.presentation.description} </h4>
       </div>
     );
   }

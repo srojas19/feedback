@@ -23,15 +23,11 @@ class Container extends Component {
 <div class="container bootstrap snippet">
     <div class="row">
     <div class="col-md-12">
-        <div class="blog-comment">
-        <h3 class="text-success"><Information
-                presentation = {this.props.presentation} />
-        </h3>
-                <hr/>
+      <div class="blog-comment">
+        <Information presentation = {this.props.presentation} />
+        <hr/>
         <CommentList comments = {this.props.comments} />
-
         <CommentForm presentationId = {this.props.presentationId}/>
-
       </div>
     </div>
   </div>
