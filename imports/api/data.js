@@ -36,6 +36,43 @@ Meteor.methods({
       }
     });
   },
+  'presentations.setSlides'(parameters) {
+    check(parameters, Object);
+    
+    if (! Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    let presentation = Presentations.findOne({_id: parameters.presentationId});
+
+    if(Meteor.userId() !== presentation.user._id ) {
+      throw new Meteor.Error('User doesnt own the presentation');
+    }
+    
+    Presentations.update(
+      {_id: parameters.presentationId},
+      {$set: {slides: parameters.url, currentSlide: 1}}
+    );
+  },
+  'presentations.setCurrentSlide'(parameters) {
+    check(parameters, Object);
+    check(parameters.currentSlide, Number);
+    
+    if (! Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    let presentation = Presentations.findOne({_id: parameters.presentationId});
+
+    if(Meteor.userId() !== presentation.user._id ) {
+      throw new Meteor.Error('User doesnt own the presentation');
+    }
+    
+    Presentations.update(
+      {_id: parameters.presentationId},
+      {$set: {currentSlide: parameters.currentSlide}}
+    );
+  },
   'presentations.delete'(presentationId) {
     check(presentationId, String);
     

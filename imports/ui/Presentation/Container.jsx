@@ -1,37 +1,67 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
+
+
+import ReactFilestack, { client } from 'filestack-react';
 
 // import './Container.css';
 
 import CommentList from './CommentList.jsx';
 import Information from './Information.jsx';
 import CommentForm from './CommentForm.jsx';
+import Slides from './Slides.jsx';
  
 import { Presentations, Comments } from '../../api/data.js';
 
 class Container extends Component {
-  
+
   constructor(props) {
     super(props);
+    this.onSuccess = this.onSuccess.bind(this);    
   }
 
+  onSuccess(result) {
+    console.log(result);
+    Meteor.call('presentations.setSlides', 
+      {
+        presentationId: this.props.presentation._id,
+        url : result.filesUploaded[0].url
+      }
+    );
+  }
 
   render() {
-    return (
-      
-<div className="container bootstrap snippet">
-    <div className="row">
-    <div className="col-md-12">
-      <div className="blog-comment">
+    return (      
+      <div className="container "> 
+        { Meteor.userId() === this.props.presentation.user._id && 
+          !this.props.presentation.slides &&
+          <ReactFilestack
+            apikey='AEz6KGrIcTPGDaVBQhxBOz'
+            buttonText="Upload your Slides!"
+            buttonClass="btn"
+            options={{
+                fromSources:["local_file_system","googledrive","dropbox","url"],
+                accept:[".pdf"],
+                maxFiles:1
+              }}
+            onSuccess={this.onSuccess}
+          />}
+        { this.props.presentation.slides &&
+          <Slides 
+            url={this.props.presentation.slides}
+            presentationId = {this.props.presentation._id}
+            owner = {this.props.presentation.user._id}
+            currentSlide = {this.props.presentation.currentSlide}
+          />} 
         <Information presentation = {this.props.presentation} />
         <hr/>
-        <CommentList comments = {this.props.comments} />
+        <div className="blog-comment bootstrap snippet">
+          <CommentList comments = {this.props.comments} />
+        </div>
         <CommentForm presentationId = {this.props.presentationId}/>
       </div>
-    </div>
-  </div>
-</div>
     );
   }
 }

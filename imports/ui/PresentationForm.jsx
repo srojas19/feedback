@@ -12,7 +12,8 @@ class PresentationForm extends Component {
     this.handleCancel = this.handleCancel.bind(this);
     this.state = {
       name : null,
-      description: null
+      description: null,
+      file: null
     };
   }
 
@@ -30,7 +31,8 @@ class PresentationForm extends Component {
     event.preventDefault();
     const presentation = {
       name: this.state.name,
-      description: this.state.description
+      description: this.state.description,
+      slides: this.state.slides
     };
     this.props.handleSubmit(presentation);
   }
@@ -38,7 +40,8 @@ class PresentationForm extends Component {
   handleCancel() {
     this.setState({
       name : null,
-      description: null
+      description: null,
+      file: null
     });
     this.props.handleCancel();
   }

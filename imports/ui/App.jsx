@@ -51,7 +51,6 @@ class App extends Component {
           alert('There was an error creating the presentation');
           return;
         } 
-        console.log(res);
         this.setState({showPresentationForm: false,
                     presentationId: res});
     });
