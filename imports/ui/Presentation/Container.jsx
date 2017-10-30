@@ -40,7 +40,7 @@ class Container extends Component {
           <ReactFilestack
             apikey='AEz6KGrIcTPGDaVBQhxBOz'
             buttonText="Upload your Slides!"
-            buttonClass="btn"
+            buttonClass="btn btn-primary btnslides"
             options={{
                 fromSources:["local_file_system","googledrive","dropbox","url"],
                 accept:[".pdf"],

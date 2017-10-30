@@ -10,41 +10,29 @@ class NavBar extends Component {
     super(props);
   }
 
-  onEnter(evt) {
-    if(evt.key ==='Enter') {
-      this.props.handleSearch(evt.target.value);
-    }
-  }
-
   onClickCreate(evt) {
     this.props.handleCreateButton();
   }
 
-  render() {
+  render() { 
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <a className="h1 navbar-brand mb-0">Feedback</a>
+        <a className="h1 navbar-brand mb-0">FeedBack</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <div className="my-2 my-lg-0 btn btn-outline-success">
-            <AccountsUIWrapper />
-          </div>
-          
-          <input 
-            className="form-control mr-sm-2 mx-3" 
-            type="text" 
-            placeholder="Presentation" 
-            aria-label="Search"
-            onKeyPress = {this.onEnter.bind(this)}
-          />
+        <div className="nav navbar-nav navbar-right" id="navbarSupportedContent">
           <button 
-            className="btn btn-outline-primary my-2 my-sm-0" 
+            className="btn btn-outline-primary my-2 my-sm-0 create" 
             type="submit"
             onClick={this.onClickCreate.bind(this)}
           > Create</button>
+          <div className="my-2 my-lg-0 btn btn-outline-success signin">
+            <AccountsUIWrapper />
+          </div>
+          
+          
         </div>
       </nav>
     );

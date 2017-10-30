@@ -36,7 +36,16 @@ class App extends Component {
                   showPresentationForm: false});
   }
 
+  onEnter(evt) {
+    if(evt.key ==='Enter') {
+      this.handleSearch(evt.target.value);
+    }
+  }
   handleCreateButton() {
+    if(!this.props.user) {
+      alert('You need to be logged in to create a presentation');
+      return;
+    } 
     this.setState({showPresentationForm: true});
   }
 
@@ -67,6 +76,22 @@ class App extends Component {
             handleSearch={this.handleSearch}
             handleCreateButton={this.handleCreateButton}
           />
+          {!this.state.showPresentationForm && !this.state.presentationId &&
+
+            <div className="Container buscador">
+            <h1 className="row titulo">FeedBack</h1>
+            <div className="row">
+             <input 
+                className="form-control" 
+                type="text" 
+                placeholder="Press Enter to search a presentation" 
+                aria-label="Search"
+                onKeyPress = {this.onEnter.bind(this)}
+              />
+            </div>
+          </div>
+          }
+          
           {this.state.presentationId && 
           !this.state.showPresentationForm &&
           this.props.user &&

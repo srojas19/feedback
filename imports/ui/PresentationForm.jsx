@@ -57,7 +57,8 @@ class PresentationForm extends Component {
             <input 
               type="text" 
               className="form-control" 
-              name="name" 
+              name="name"
+              aria-label="Name" 
               placeholder="Presentation Name" 
               onChange={this.handleInputChange}/>
           </div>
@@ -68,6 +69,7 @@ class PresentationForm extends Component {
             <textarea 
               className="form-control" 
               name="description" 
+              aria-label="description"
               placeholder="Describe your presentation" 
               rows="3"
               onChange={this.handleInputChange}/>

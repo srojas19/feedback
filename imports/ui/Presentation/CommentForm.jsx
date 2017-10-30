@@ -35,7 +35,8 @@ handleSubmit(event) {
           className="form-control"
           type="text"
           ref="textInput"
-          placeholder="Presiona Enter para enviar comentario"
+          aria-label="new-comment"
+          placeholder="Press Enter to send a comment"
         />
       </form>
       

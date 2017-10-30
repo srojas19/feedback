@@ -1,16 +1,16 @@
 
 body{
-    background:#eee;
+     background:#E2E2E2;
 }
 
 hr {
     margin-top: 20px;
     margin-bottom: 20px;
     border: 0;
-    border-top: 1px solid #FFFFFF;
+    border-top: 1px solid #222222;
 }
 a {
-    color: #82b440;
+    color: #222222;
     text-decoration: none;
 }
 .blog-comment::before,
@@ -62,16 +62,16 @@ a {
        	 -o-border-radius: 4px;
     		border-radius: 4px;
 	background: #fff;
-	color: #6b6e80;
+	color: #222222;
 	position: relative;
 }
 
 .blog-comment .meta {
 	font-size: 13px;
-	color: #aaaaaa;
+	color: #222222;
 	padding-bottom: 8px;
 	margin-bottom: 10px !important;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #222222;
 }
 
 .blog-comment ul.comments ul{
@@ -97,4 +97,30 @@ a {
 .sticky {
 	position: sticky;
 	bottom: 0px;
+}
+
+.buscador { 
+	padding: 200px 100px;
+	align-items: center;
+}
+
+.titulo {
+	font-size: 100px;
+}
+
+.create { 
+	width: 200px;
+	margin-right: 30px;
+}
+
+.signin {
+	width: 200px;
+}
+
+.votarPresentacion {
+	border-color: #222222;
+}
+
+.btnslides {
+	margin-top: 10px;
 }

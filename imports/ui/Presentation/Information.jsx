@@ -20,7 +20,7 @@ class Information extends Component {
             <h4 className="col-sm-10">Código: {this.props.presentation.code} </h4>
             <h4 className="col-sm-1"> {this.props.presentation.votes.length} </h4>
             <div className="col-sm-1">
-            <button type="button" className="btn btn-primary " onClick={this.handleClick.bind(this)}>👍</button>
+            <button type="button" className="btn btn-primary votarPresentacion" onClick={this.handleClick.bind(this)}>👍</button>
             </div>
           </div>
         </div>
