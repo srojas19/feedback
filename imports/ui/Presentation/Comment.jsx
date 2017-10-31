@@ -34,7 +34,7 @@ export default class Comment extends Component {
     return (
 
       <li className="clearfix">
-         <img src="https://bootdey.com/img/Content/user_1.jpg" className="avatar" alt=""/>
+         <img src="https://bootdey.com/img/Content/user_1.jpg" className="avatar" alt="avatar"/>
           <div className="post-comments">
             <div className="meta">
               <p> {this.darfecha(this.props.comment.createdAt)}<a href="#">{this.props.comment.user.username}</a> says: </p>    

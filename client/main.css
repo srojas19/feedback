@@ -1,6 +1,6 @@
 
 body{
-     background:#E2E2E2;
+     background:#E2E2E2; 
 }
 
 hr {
@@ -123,4 +123,5 @@ a {
 
 .btnslides {
 	margin-top: 10px;
+	background: red;
 }
