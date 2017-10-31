@@ -111,6 +111,7 @@ a {
 .create { 
 	width: 200px;
 	margin-right: 30px;
+	background: green;
 }
 
 .signin {
@@ -119,9 +120,14 @@ a {
 
 .votarPresentacion {
 	border-color: #222222;
+	background: green;
 }
 
 .btnslides {
 	margin-top: 10px;
-	background: red;
+	background: green;
+}
+
+.botonCrear { 
+	background: green;
 }

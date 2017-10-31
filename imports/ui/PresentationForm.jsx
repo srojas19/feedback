@@ -52,7 +52,7 @@ class PresentationForm extends Component {
       <h2>Create your Presentation</h2>
       <form onSubmit={this.handleSubmit}>
         <div className="form-group row">
-          <label htmlFor="name" className="col-sm-2 col-form-label">Name</label>
+          <h4 htmlFor="name" className="col-sm-2 col-form-label">Name</h4>
           <div className="col-sm-10">
             <input 
               type="text" 
@@ -64,7 +64,7 @@ class PresentationForm extends Component {
           </div>
         </div>
         <div className="form-group row">
-          <label htmlFor="description" className="col-sm-2 col-form-label">Description</label>
+          <h4 htmlFor="description" className="col-sm-2 col-form-label">Description</h4>
           <div className="col-sm-10">
             <textarea 
               className="form-control" 
@@ -77,7 +77,7 @@ class PresentationForm extends Component {
         </div>
         <div className="form-group row">
           <div className="col">
-            <button type="submit" value="Submit" className="btn btn-primary mx-2">Create</button>
+            <button type="submit" value="Submit" className="btn btn-success mx-2 botonCrear">Create</button>
             <input type="button" value="Cancel" className="btn btn-danger mx-2" onClick={this.handleCancel}/>
           </div>
         </div>
