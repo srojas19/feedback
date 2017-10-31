@@ -18,6 +18,7 @@ class PresentationForm extends Component {
   }
 
   handleInputChange(event) {
+    //Interesante manejo del estado usando name
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -47,6 +48,7 @@ class PresentationForm extends Component {
   }
 
   render() {
+    //Probablemente considerar uso de lables para facilitar la accesibilidad
     return (
     <div className="container my-4">
       <h2>Create your Presentation</h2>
