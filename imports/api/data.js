@@ -6,6 +6,7 @@ import RandomString from 'randomstring';
 
 export const Presentations = new Mongo.Collection('Presentations');
 
+//Consider modularizing the comments function to help testing (mantainability purposoes)
 export const Comments = new Mongo.Collection('Comments');
 
 function generateCode() {
